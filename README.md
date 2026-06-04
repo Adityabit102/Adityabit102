@@ -23,8 +23,6 @@
 ![](https://img.shields.io/badge/🏆_AWS-Certified_×2-ff9900?style=flat-square)
 ![](https://img.shields.io/badge/📍-Ghaziabad,_India-bf5fff?style=flat-square)
 
-> 🔥 *[Click the banner above to see the fully animated version](https://Adityabit102.github.io/Adityabit102/header-banner.html)*
-
 </div>
 
 ---
