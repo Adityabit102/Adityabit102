@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tech Constellation – Aditya Raj Singh</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:100%;background:#070010;overflow:hidden;font-family:'Share Tech Mono',monospace}
+
+  .wrap{
+    width:100%;padding:1.2rem 1.4rem 1.4rem;
+    background:linear-gradient(160deg,#070010 0%,#0d0022 60%,#06000e 100%);
+    min-height:100vh;
+  }
+
+  .section-title{
+    font-family:'Orbitron',monospace;
+    font-size:.7rem;letter-spacing:.22em;color:#6655aa;
+    margin-bottom:.9rem;display:flex;align-items:center;gap:10px;
+  }
+  .section-title::before,.section-title::after{
+    content:'';flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,#44009944,transparent);
+  }
+
+  /* ── CONSTELLATION ── */
+  .constellation-box{
+    border:1px solid #4400aa22;border-radius:12px;
+    padding:.6rem;margin-bottom:1.4rem;
+    background:rgba(10,0,25,.6);
+    position:relative;overflow:hidden;
+  }
+  canvas#c{display:block;width:100%}
+
+  /* ── LEGEND ── */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:.4rem .9rem;
+    justify-content:center;margin-top:.5rem;
+  }
+  .leg-item{display:flex;align-items:center;gap:5px;font-size:.62rem;color:#8888bb;letter-spacing:.08em}
+  .leg-dot{width:8px;height:8px;border-radius:50%}
+
+  /* ── RPG STATS ── */
+  .rpg-box{
+    border:1px solid #4400aa22;border-radius:12px;
+    padding:1.1rem 1.3rem;
+    background:rgba(10,0,25,.6);
+  }
+  .rpg-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+  @media(max-width:500px){.rpg-grid{grid-template-columns:1fr}}
+
+  .stat-row{display:flex;flex-direction:column;gap:4px}
+  .stat-header{display:flex;justify-content:space-between;align-items:center}
+  .stat-name{font-size:.65rem;color:#c0c0e0;letter-spacing:.09em}
+  .stat-val{font-size:.65rem;font-weight:700}
+  .stat-track{height:7px;background:#1a1a3a;border-radius:4px;overflow:hidden}
+  .stat-fill{
+    height:100%;border-radius:4px;width:0%;
+    transition:width 1.4s cubic-bezier(.4,0,.2,1);
+  }
+  .stat-tag{
+    font-size:.55rem;padding:1px 6px;border-radius:3px;
+    letter-spacing:.07em;margin-top:1px;align-self:flex-start;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="section-title">🌌 TECH CONSTELLATION</div>
+
+  <div class="constellation-box">
+    <canvas id="c"></canvas>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="section-title">⚡ DEVELOPER STATS</div>
+
+  <div class="rpg-box">
+    <div class="rpg-grid" id="statsGrid"></div>
+  </div>
+
+</div>
+
+<script>
+/* ── CONSTELLATION ── */
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+const groups = {
+  lang:  {label:'Languages', color:'#00f5ff'},
+  front: {label:'Frontend',  color:'#bf5fff'},
+  back:  {label:'Backend',   color:'#ff6a00'},
+  ai:    {label:'AI / ML',   color:'#39ff14'},
+  cloud: {label:'Cloud / BI',color:'#ff9900'},
+};
+
+const nodes = [
+  // Languages
+  {id:0, label:'Python',     gx:.10,gy:.15, r:15, group:'lang'},
+  {id:1, label:'JS',         gx:.24,gy:.09, r:12, group:'lang'},
+  {id:2, label:'TypeScript', gx:.40,gy:.14, r:11, group:'lang'},
+  {id:3, label:'Java',       gx:.54,gy:.08, r:10, group:'lang'},
+  {id:4, label:'C++',        gx:.67,gy:.15, r:10, group:'lang'},
+  {id:5, label:'SQL',        gx:.80,gy:.09, r:10, group:'lang'},
+  // Frontend
+  {id:6, label:'React',      gx:.16,gy:.40, r:13, group:'front'},
+  {id:7, label:'HTML/CSS',   gx:.30,gy:.46, r:10, group:'front'},
+  {id:8, label:'Bootstrap',  gx:.08,gy:.55, r:9,  group:'front'},
+  // Backend
+  {id:9,  label:'Node.js',   gx:.46,gy:.38, r:12, group:'back'},
+  {id:10, label:'Express',   gx:.60,gy:.44, r:10, group:'back'},
+  {id:11, label:'FastAPI',   gx:.74,gy:.38, r:11, group:'back'},
+  {id:12, label:'MongoDB',   gx:.86,gy:.44, r:11, group:'back'},
+  {id:13, label:'Docker',    gx:.80,gy:.28, r:10, group:'back'},
+  // AI / ML
+  {id:14, label:'TensorFlow',gx:.14,gy:.72, r:13, group:'ai'},
+  {id:15, label:'Keras',     gx:.28,gy:.80, r:10, group:'ai'},
+  {id:16, label:'Scikit',    gx:.43,gy:.74, r:10, group:'ai'},
+  {id:17, label:'Pandas',    gx:.55,gy:.82, r:9,  group:'ai'},
+  {id:18, label:'Streamlit', gx:.67,gy:.74, r:9,  group:'ai'},
+  // Cloud
+  {id:19, label:'AWS',       gx:.78,gy:.65, r:14, group:'cloud'},
+  {id:20, label:'Power BI',  gx:.88,gy:.75, r:10, group:'cloud'},
+  {id:21, label:'Tableau',   gx:.92,gy:.57, r:9,  group:'cloud'},
+];
+
+const edges = [
+  [0,1],[1,2],[2,3],[3,4],[4,5],       // lang chain
+  [0,6],[6,7],[7,8],[6,9],             // lang→frontend→backend
+  [9,10],[10,11],[11,12],[13,12],[11,13],[5,13],
+  [0,14],[14,15],[15,16],[16,17],[17,18],[18,19],
+  [19,20],[20,21],[21,13],
+  [2,9],[0,9],[9,16],[16,0],[19,11],[3,10],[4,11],
+];
+
+let W, H;
+function resize(){
+  W = canvas.width  = canvas.offsetWidth  * devicePixelRatio;
+  H = canvas.height = Math.round(W * .5);
+  canvas.style.height = (H / devicePixelRatio) + 'px';
+}
+resize();
+window.addEventListener('resize', resize);
+
+const px = n => n.gx * W;
+const py = n => n.gy * H;
+
+// bg stars
+const stars = Array.from({length:80},()=>({
+  x:Math.random(), y:Math.random(),
+  r:.5+Math.random()*1.2,
+  a:.15+Math.random()*.7,
+  tw: 2+Math.random()*4, ph:Math.random()*Math.PI*2
+}));
+
+// animate
+let t = 0;
+function draw(){
+  ctx.clearRect(0,0,W,H);
+
+  // deep bg
+  const bg = ctx.createRadialGradient(W*.5,H*.4,0,W*.5,H*.4,W*.65);
+  bg.addColorStop(0,'#120028');bg.addColorStop(1,'#04000e');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+  // stars twinkle
+  stars.forEach(s=>{
+    const a = s.a * (.5 + .5*Math.sin(t/s.tw + s.ph));
+    ctx.beginPath();ctx.arc(s.x*W, s.y*H, s.r, 0, Math.PI*2);
+    ctx.fillStyle=`rgba(200,180,255,${a})`;ctx.fill();
+  });
+
+  const progress = Math.min(t / 90, 1); // 0→1 in 90 frames
+
+  // edges
+  edges.forEach(([a,b],i)=>{
+    const ep = Math.max(0, Math.min(1, (progress * edges.length - i)));
+    if(ep <= 0) return;
+    const ax=px(nodes[a]), ay=py(nodes[a]);
+    const bx=px(nodes[b]), by=py(nodes[b]);
+    const ex=ax+(bx-ax)*ep, ey=ay+(by-ay)*ep;
+    ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(ex,ey);
+    const gc = groups[nodes[a].group].color;
+    ctx.strokeStyle = gc + '30';
+    ctx.lineWidth = 1.5 * devicePixelRatio;
+    ctx.stroke();
+  });
+
+  // nodes
+  nodes.forEach((n,i)=>{
+    const np = Math.max(0, Math.min(1, (progress * nodes.length - i) * 2));
+    if(np <= 0) return;
+    const x=px(n), y=py(n);
+    const r = n.r * devicePixelRatio * np;
+    const col = groups[n.group].color;
+
+    // pulse glow
+    const pulse = 1 + .12*Math.sin(t*.05 + n.gx*8);
+
+    // outer glow
+    const grd = ctx.createRadialGradient(x,y,0,x,y,(r+8*devicePixelRatio)*pulse);
+    grd.addColorStop(0, col+'44'); grd.addColorStop(1,'transparent');
+    ctx.beginPath();ctx.arc(x,y,(r+8*devicePixelRatio)*pulse,0,Math.PI*2);
+    ctx.fillStyle=grd;ctx.fill();
+
+    // node fill
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle = col + 'bb';ctx.fill();
+    ctx.strokeStyle = col;ctx.lineWidth = 1.5*devicePixelRatio;ctx.stroke();
+
+    // label
+    const fs = Math.max(9, n.r * .72) * devicePixelRatio;
+    ctx.font = `${fs}px "Share Tech Mono",monospace`;
+    ctx.fillStyle = '#e0e0ff';ctx.textAlign='center';
+    ctx.fillText(n.label, x, y + r + 12*devicePixelRatio);
+  });
+
+  t++;
+  requestAnimationFrame(draw);
+}
+draw();
+
+// legend
+const legendEl = document.getElementById('legend');
+Object.entries(groups).forEach(([k,g])=>{
+  const d = document.createElement('div');
+  d.className='leg-item';
+  d.innerHTML=`<span class="leg-dot" style="background:${g.color}"></span>${g.label}`;
+  legendEl.appendChild(d);
+});
+
+/* ── RPG STATS ── */
+const stats = [
+  {name:'FULL STACK DEV',     val:88, bar:'linear-gradient(90deg,#00f5ff,#0080ff)', color:'#00f5ff', tag:'LVL 88'},
+  {name:'AI / ML ENGINEER',   val:82, bar:'linear-gradient(90deg,#bf5fff,#6600cc)', color:'#bf5fff', tag:'LVL 82'},
+  {name:'DATA ENGINEERING',   val:80, bar:'linear-gradient(90deg,#ff9900,#ff4500)', color:'#ff9900', tag:'LVL 80'},
+  {name:'CLOUD ARCHITECT',    val:75, bar:'linear-gradient(90deg,#39ff14,#009900)', color:'#39ff14', tag:'LVL 75'},
+  {name:'BACKEND SYSTEMS',    val:85, bar:'linear-gradient(90deg,#ff6a00,#ff2000)', color:'#ff6a00', tag:'LVL 85'},
+  {name:'PROBLEM SOLVING',    val:90, bar:'linear-gradient(90deg,#00f5ff,#bf5fff)', color:'#00f5ff', tag:'LVL 90'},
+];
+const grid = document.getElementById('statsGrid');
+stats.forEach(s=>{
+  const d = document.createElement('div');
+  d.className='stat-row';
+  d.innerHTML=`
+    <div class="stat-header">
+      <span class="stat-name">${s.name}</span>
+      <span class="stat-val" style="color:${s.color}">${s.val}%</span>
+    </div>
+    <div class="stat-track">
+      <div class="stat-fill" data-target="${s.val}" style="background:${s.bar}"></div>
+    </div>
+    <span class="stat-tag" style="color:${s.color};background:${s.color}18;border:1px solid ${s.color}33">${s.tag}</span>
+  `;
+  grid.appendChild(d);
+});
+
+// Trigger fill animation after paint
+requestAnimationFrame(()=>{
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.stat-fill').forEach(el=>{
+      el.style.width = el.dataset.target + '%';
+    });
+  });
+});
+</script>
+</body>
+</html>

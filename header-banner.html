@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Header Banner – Aditya Raj Singh</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:100%;height:100%;background:#000;overflow:hidden}
+
+  canvas#bgCanvas{
+    position:absolute;inset:0;width:100%;height:100%;
+  }
+
+  .banner{
+    position:relative;width:100%;height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+
+  /* Wave SVG layers */
+  .wave-layer{
+    position:absolute;bottom:0;left:0;width:200%;height:55%;
+    animation:waveDrift 8s linear infinite;
+  }
+  .wave-layer.w2{animation-duration:11s;animation-direction:reverse;opacity:.55}
+  .wave-layer.w3{animation-duration:14s;opacity:.35}
+  @keyframes waveDrift{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* Name */
+  .name-wrap{position:relative;z-index:10;text-align:center;padding:0 2rem}
+
+  .name-text{
+    font-family:'Orbitron',monospace;
+    font-size:clamp(2.4rem,8vw,5.2rem);
+    font-weight:900;
+    letter-spacing:.15em;
+    color:#fff;
+    text-transform:uppercase;
+    position:relative;
+    display:inline-block;
+  }
+
+  /* each letter gets its own span for stagger */
+  .name-text .char{
+    display:inline-block;
+    animation:charDrop .6s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes charDrop{
+    0%{opacity:0;transform:translateY(-40px) scale(.8)}
+    100%{opacity:1;transform:translateY(0) scale(1)}
+  }
+
+  /* fire glow flicker on name */
+  .name-text{
+    text-shadow:
+      0 0 20px #ff4500cc,
+      0 0 40px #ff6a0099,
+      0 0 80px #ff200055;
+    animation:fireFlicker 3s ease-in-out infinite;
+  }
+  @keyframes fireFlicker{
+    0%,100%{text-shadow:0 0 20px #ff4500cc,0 0 40px #ff6a0099,0 0 80px #ff200055}
+    33%{text-shadow:0 0 30px #ff6a00ee,0 0 60px #ff4500bb,0 0 100px #ff200077}
+    66%{text-shadow:0 0 15px #ff2000cc,0 0 35px #ff450099,0 0 70px #ff6a0044}
+  }
+
+  /* scanline over name */
+  .name-text::after{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);
+    pointer-events:none;
+  }
+
+  .subtitle{
+    font-family:'Orbitron',monospace;
+    font-size:clamp(.75rem,2.2vw,1.15rem);
+    font-weight:400;
+    letter-spacing:.3em;
+    color:rgba(255,255,255,.75);
+    margin-top:.9rem;
+    opacity:0;
+    animation:subFade 1s .9s forwards;
+  }
+  @keyframes subFade{to{opacity:1}}
+
+  /* Corner brackets decoration */
+  .bracket{
+    position:absolute;width:28px;height:28px;opacity:.6;
+    border-color:#ff6a00;border-style:solid;
+  }
+  .bracket.tl{top:-14px;left:-14px;border-width:2px 0 0 2px}
+  .bracket.tr{top:-14px;right:-14px;border-width:2px 2px 0 0}
+  .bracket.bl{bottom:-14px;left:-14px;border-width:0 0 2px 2px}
+  .bracket.br{bottom:-14px;right:-14px;border-width:0 2px 2px 0}
+
+  /* particle sparks */
+  .spark{
+    position:absolute;width:3px;height:3px;border-radius:50%;
+    background:#ff6a00;z-index:5;pointer-events:none;
+    animation:sparkFly var(--dur,2s) var(--delay,0s) linear infinite;
+    opacity:0;
+  }
+  @keyframes sparkFly{
+    0%{transform:translate(var(--sx),var(--sy)) scale(1);opacity:.9}
+    80%{opacity:.4}
+    100%{transform:translate(calc(var(--sx) + var(--dx)),calc(var(--sy) + var(--dy))) scale(0);opacity:0}
+  }
+</style>
+</head>
+<body>
+<div class="banner" id="banner">
+
+  <!-- Animated fire/wave canvas bg -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Wave SVG layers -->
+  <svg class="wave-layer" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,80 C240,160 480,0 720,80 C960,160 1200,0 1440,80 L1440,200 L0,200Z" fill="url(#wg1)"/>
+    <defs><linearGradient id="wg1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a0000"/><stop offset="50%" stop-color="#8b1a00"/><stop offset="100%" stop-color="#1a0500"/>
+    </linearGradient></defs>
+  </svg>
+  <svg class="wave-layer w2" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,100 C360,20 720,180 1080,100 C1260,60 1380,140 1440,100 L1440,200 L0,200Z" fill="url(#wg2)"/>
+    <defs><linearGradient id="wg2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3d0900"/><stop offset="100%" stop-color="#7a2200"/>
+    </linearGradient></defs>
+  </svg>
+  <svg class="wave-layer w3" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,60 C180,120 360,20 540,80 C720,140 900,40 1080,80 C1260,120 1380,60 1440,80 L1440,200 L0,200Z" fill="url(#wg3)"/>
+    <defs><linearGradient id="wg3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff4500"/><stop offset="60%" stop-color="#ff6a00"/><stop offset="100%" stop-color="#ff9a3c"/>
+    </linearGradient></defs>
+  </svg>
+
+  <!-- Name -->
+  <div class="name-wrap" id="nameWrap">
+    <div class="name-text" id="nameText">ADITYA RAJ SINGH</div>
+    <div class="subtitle">Full Stack &times; AI/ML &times; Data Engineer</div>
+    <div class="bracket tl"></div>
+    <div class="bracket tr"></div>
+    <div class="bracket bl"></div>
+    <div class="bracket br"></div>
+  </div>
+
+</div>
+
+<script>
+// ── Canvas background: moving fire gradient + embers ──
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize(){
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Embers
+const embers = Array.from({length:60},()=>({
+  x: Math.random()*1200, y: Math.random()*400+100,
+  r: Math.random()*2+.5,
+  vx: (Math.random()-.5)*.4, vy: -(Math.random()*.8+.3),
+  life: Math.random(), decay: .002+Math.random()*.004,
+  hue: 15+Math.floor(Math.random()*30)
+}));
+
+function drawBg(t){
+  ctx.clearRect(0,0,W,H);
+  // Radial gradient bg — deep dark with ember glow
+  const grd = ctx.createRadialGradient(W/2,H*.4,0,W/2,H*.4,W*.7);
+  grd.addColorStop(0, `rgba(90,15,0,${.55+.1*Math.sin(t*.8)})`);
+  grd.addColorStop(.45,`rgba(30,4,0,.85)`);
+  grd.addColorStop(1, `rgba(0,0,0,1)`);
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,W,H);
+
+  // Embers
+  embers.forEach(e=>{
+    e.x += e.vx; e.y += e.vy + Math.sin(t+e.x*.02)*.15;
+    e.life -= e.decay;
+    if(e.life <= 0 || e.y < -10){
+      e.x=Math.random()*W; e.y=H+10;
+      e.life=.6+Math.random()*.4;
+    }
+    ctx.beginPath();
+    ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+    ctx.fillStyle=`hsla(${e.hue},100%,60%,${e.life*.9})`;
+    ctx.fill();
+  });
+}
+
+let frame=0;
+(function loop(){
+  drawBg(frame*0.025);
+  frame++;
+  requestAnimationFrame(loop);
+})();
+
+// ── Animate name letters ──
+const nameEl = document.getElementById('nameText');
+const text = nameEl.textContent;
+nameEl.innerHTML = text.split('').map((c,i)=>{
+  if(c===' ') return '<span class="char" style="display:inline-block;width:.4em"> </span>';
+  return `<span class="char" style="animation-delay:${i*0.045}s">${c}</span>`;
+}).join('');
+
+// ── Sparks ──
+const banner = document.getElementById('banner');
+for(let i=0;i<18;i++){
+  const s = document.createElement('div');
+  s.className='spark';
+  const x = 10+Math.random()*80, y=10+Math.random()*80;
+  const ang = Math.random()*Math.PI*2;
+  const dist = 40+Math.random()*120;
+  s.style.cssText=`left:${x}%;top:${y}%;--sx:0px;--sy:0px;--dx:${Math.cos(ang)*dist}px;--dy:${Math.sin(ang)*dist}px;--dur:${1.5+Math.random()*2}s;--delay:${Math.random()*2}s`;
+  banner.appendChild(s);
+}
+</script>
+</body>
+</html>
