@@ -1,8 +1,8 @@
 <!-- Header Banner -->
 <div align="center">
 
-<a href="https://Adityabit102.github.io/Adityabit102/header-banner.html">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0000,30:ff2000,60:ff6a00,100:ff9a3c&height=220&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=52&fontAlignY=38&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=58&descSize=19&animation=twinkling&stroke=ff4500&strokeWidth=2&fontAlign=50" width="100%"/>
+<a href="https://Adityabit102.github.io/Adityabit102/header-banner.html" target="_blank">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,15:1a0000,35:3d0900,55:8b1a00,75:ff4500,90:ff6a00,100:ff9a3c&height=250&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=52&fontAlignY=40&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=60&descSize=19&animation=twinkling&stroke=ff4500&strokeWidth=2&fontAlign=50" width="100%"/>
 </a>
 
 <!-- Typing SVG -->
@@ -22,6 +22,8 @@
 ![](https://img.shields.io/badge/⭐_CGPA-9.0%2F10-39ff14?style=flat-square)
 ![](https://img.shields.io/badge/🏆_AWS-Certified_×2-ff9900?style=flat-square)
 ![](https://img.shields.io/badge/📍-Ghaziabad,_India-bf5fff?style=flat-square)
+
+> 🔥 *[Click the banner above to see the fully animated version](https://Adityabit102.github.io/Adityabit102/header-banner.html)*
 
 </div>
 
@@ -118,7 +120,7 @@ class AdityaRajSingh:
 ## 📊 GitHub Stats
 
 <div align="center">
-    
+
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=Adityabit102&theme=radical&hide_border=true&background=0d0d1a&ring=ff2d78&fire=ff2d78&currStreakLabel=00f5ff&sideLabels=00f5ff&dates=c0c0e0&stroke=bf5fff" />
 
 </div>
@@ -130,6 +132,16 @@ class AdityaRajSingh:
 <div align="center">
 
 ![Trophies](https://github-trophies.vercel.app/?username=Adityabit102&theme=radical&no-frame=true&no-bg=true&row=1&column=7&margin-w=4)
+
+</div>
+
+---
+
+## 🐍 Contribution Snake
+
+<div align="center">
+
+![Snake animation](https://raw.githubusercontent.com/Adityabit102/Adityabit102/output/github-contribution-grid-snake-dark.svg)
 
 </div>
 
