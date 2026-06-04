@@ -1,7 +1,7 @@
 <!-- Header Banner -->
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00f5ff,50:bf5fff,100:ff2d78&height=200&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=50&fontAlignY=38&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0000,30:ff2000,60:ff6a00,100:ff9a3c&height=220&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=52&fontAlignY=38&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=58&descSize=19&animation=fadeIn&stroke=ff4500&strokeWidth=2" width="100%"/>
 
 <!-- Typing SVG -->
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=22&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&lines=Building+Full+Stack+Apps+That+Work...;Training+ML+Models+To+Think+Smarter...;AWS+Certified+Data+Engineer+%26+AI+Practitioner;Turning+Data+Into+Decisions...;Always+Leveling+Up.+Always+Shipping+%F0%9F%9A%80" alt="Typing SVG" />
@@ -326,6 +326,6 @@ Analyzed sales trends & seasonal patterns. Built interactive Power BI dashboards
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff2d78,50:bf5fff,100:00f5ff&height=120&section=footer&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff9a3c,40:ff6a00,70:ff2000,100:1a0000&height=140&section=footer&fontColor=ffffff&animation=fadeIn" width="100%"/>
 
 </div>
