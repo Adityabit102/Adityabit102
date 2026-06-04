@@ -1,7 +1,9 @@
 <!-- Header Banner -->
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0000,30:ff2000,60:ff6a00,100:ff9a3c&height=220&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=52&fontAlignY=38&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=58&descSize=19&animation=fadeIn&stroke=ff4500&strokeWidth=2" width="100%"/>
+<a href="https://Adityabit102.github.io/Adityabit102/header-banner.html">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0000,30:ff2000,60:ff6a00,100:ff9a3c&height=220&section=header&text=ADITYA%20RAJ%20SINGH&fontSize=52&fontAlignY=38&fontColor=ffffff&desc=Full%20Stack%20%C3%97%20AI%2FML%20%C3%97%20Data%20Engineer&descAlignY=58&descSize=19&animation=twinkling&stroke=ff4500&strokeWidth=2&fontAlign=50" width="100%"/>
+</a>
 
 <!-- Typing SVG -->
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=22&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&lines=Building+Full+Stack+Apps+That+Work...;Training+ML+Models+To+Think+Smarter...;AWS+Certified+Data+Engineer+%26+AI+Practitioner;Turning+Data+Into+Decisions...;Always+Leveling+Up.+Always+Shipping+%F0%9F%9A%80" alt="Typing SVG" />
@@ -58,16 +60,6 @@ class AdityaRajSingh:
 | 🎓 CGPA | 🚀 Projects | 💼 Internships | 🏆 Certifications |
 |:---:|:---:|:---:|:---:|
 | **9.0 / 10** | **10+** | **4** | **12+** |
-
-</div>
-
----
-
-## 🐍 Contribution Snake
-
-<div align="center">
-
-![Snake animation](https://raw.githubusercontent.com/Adityabit102/Adityabit102/output/github-contribution-grid-snake-dark.svg)
 
 </div>
 
@@ -143,11 +135,32 @@ class AdityaRajSingh:
 
 ---
 
-## 📈 Activity Graph
+## 🌌 Tech Constellation
 
 <div align="center">
 
-[![Aditya's Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=Adityabit102&theme=react-dark&hide_border=true&bg_color=0d0d1a&color=00f5ff&line=bf5fff&point=ff2d78&area=true&area_color=bf5fff)](https://github.com/Adityabit102)
+<a href="https://Adityabit102.github.io/Adityabit102/constellation-stats.html">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Adityabit102&theme=react-dark&hide_border=true&bg_color=070010&color=00f5ff&line=bf5fff&point=ff2d78&area=true&area_color=4400aa" width="100%" alt="Click to view live Tech Constellation"/>
+</a>
+
+> *Click the graph to explore the live animated constellation ↗*
+
+</div>
+
+---
+
+## ⚡ Developer Stats
+
+<div align="center">
+
+```
+💻 Full Stack Dev    ████████████████████░  88 / 100
+🤖 AI / ML          █████████████████░░░░  82 / 100
+🔧 Backend Systems  █████████████████░░░░  85 / 100
+☁️ Cloud Architect  ███████████████░░░░░░  75 / 100
+📊 Data Engineering ████████████████░░░░░  80 / 100
+🧠 Problem Solving  █████████████████████  90 / 100
+```
 
 </div>
 
