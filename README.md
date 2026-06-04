@@ -21,7 +21,7 @@
 
 > "The best engineers never stop playing."
 
-Hey! I'm **Aditya**, a CSE undergrad at **SRM IST** (CGPA: 8.9/10, graduating 2027).  
+Hey! I'm **Aditya**, a CSE undergrad at **SRM IST** (CGPA: 9.0/10, graduating 2027).  
 I build things at the crossroads of **Full Stack Web**, **AI/ML**, and **Data Engineering**.
 
 - 🎓 **B.Tech CSE** · SRM Institute of Science & Technology, Ghaziabad
