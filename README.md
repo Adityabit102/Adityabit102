@@ -132,7 +132,7 @@ class AdityaRajSingh:
 
 <br/>
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Adityabit102&theme=radical&hide_border=true&background=0d0d1a&ring=ff2d78&fire=ff2d78&currStreakLabel=00f5ff&sideLabels=00f5ff&dates=c0c0e0&stroke=bf5fff)
+![GitHub Streak](https://streak-stats.demolab.com/?user=Adityabit102&theme=radical&hide_border=true&background=0d0d1a&ring=ff2d78&fire=ff2d78&currStreakLabel=00f5ff&sideLabels=00f5ff&dates=c0c0e0&stroke=bf5fff)
 
 </div>
 
@@ -142,7 +142,7 @@ class AdityaRajSingh:
 
 <div align="center">
 
-![Trophies](https://github-profile-trophy.vercel.app/?username=Adityabit102&theme=radical&no-frame=true&no-bg=true&row=1&column=7&margin-w=4)
+![Trophies](https://github-trophies.vercel.app/?username=Adityabit102&theme=radical&no-frame=true&no-bg=true&row=1&column=7&margin-w=4)
 
 </div>
 
