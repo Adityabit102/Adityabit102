@@ -129,10 +129,8 @@ class AdityaRajSingh:
 
 <img src="https://github-readme-stats.vercel.app/api?username=Adityabit102&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true&bg_color=0d0d1a&title_color=00f5ff&icon_color=bf5fff&text_color=c0c0e0&ring_color=ff2d78" height="180" />
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adityabit102&layout=compact&theme=radical&hide_border=true&bg_color=0d0d1a&title_color=00f5ff&text_color=c0c0e0" height="180" />
-
 <br/>
-
-![GitHub Streak](https://streak-stats.demolab.com/?user=Adityabit102&theme=radical&hide_border=true&background=0d0d1a&ring=ff2d78&fire=ff2d78&currStreakLabel=00f5ff&sideLabels=00f5ff&dates=c0c0e0&stroke=bf5fff)
+<img src="https://streak-stats.demolab.com/?user=Adityabit102&theme=radical&hide_border=true&background=0d0d1a&ring=ff2d78&fire=ff2d78&currStreakLabel=00f5ff&sideLabels=00f5ff&dates=c0c0e0&stroke=bf5fff" />
 
 </div>
 
